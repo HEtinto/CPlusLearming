@@ -53,4 +53,25 @@ for_each(books.begin(), books.end(), ShowReview);
         else 
         return false;
     }
+``` 
+&ensp;&ensp;有了这样的函数后，就可以对包含Review对象（如books）的矢量进行排序：
+```C++
+    sort(books.begin(), books.end());
+``` 
+
+&ensp;&ensp;**另一种格式的sort()。**它接受三个参数，前两个参数也是指定区间的迭代器，最后一个参数也是指定区间的迭代器，最后一个参数是指向要使用的函数的指针（函数对象），而不是用于比较的``operator < ()``。 
+
+&ensp;&ensp;返回值可以转换为``bool``，``false``表示两个参数的顺序不正确。下面是一个例子：
+``` C++
+    bool WorseThan(const Review & ri, const Review & r2)
+    {
+        if (r1.rating < r2.rating>)
+        return true;
+        else
+        return false;
+    }
+``` 
+&ensp;&ensp;有了这个函数，就可以使用下面的语句将包含Review对象的books矢量按rating升序排列：
+```C++
+    sort(books.begin(), books.end(), WorseThan);
 ```
