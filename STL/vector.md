@@ -36,4 +36,16 @@ pd = scores.begin();  //让pd指向scores的第一个元素
 &ensp;&ensp;下述代码删除第一个和第二个元素，erase()方法的第一个参数指向的是区间的起点，第二个参数指向的是终点的下一个元素。 
 ```C++
     scores.erase(score.begin(), score.begin()+2);  //vector提供了随机访问功能，因此vector类迭代器定义了诸如begin()+2等操作
+``` 
+## insert()方法 
+&ensp;&ensp;insert()方法接受3个迭代器参数，第一个参数指定了新元素的插入位置，第2个和第3个迭代器参数定义了被插入区间，该区间通常是另一个容器对象的一部分。 
+```C++
+    vector<int> old_v;
+    vector<int> new_v;
+    ......
+    old_v.insert(old_v.begin(), new_v.begin(), new_v.end());
+``` 
+&ensp;&ensp;对于拥有insert()方法的容器来说，在尾部插入元素是很简单的，下面演示了将``new_v.begin()``到``new_v.end``的元素插到``old_v``的最后一个元素的后面。 
+```C++
+    old_v.insert(old_v.end(), old_v.begin(), old_v.end());
 ```
