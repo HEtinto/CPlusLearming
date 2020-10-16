@@ -18,7 +18,8 @@ pd = scores.begin();  //让pd指向scores的第一个元素
 ++pd;  //让pd指向下一个元素
 ``` 
 &ensp;&ensp;在这里，我们可以看到，实际上迭代器有指针的作用，通过迭代器的运用，我们可以访问vector中的各个元素。 
-&ensp;&ensp;同时，我们可以通过使用C++自动类型推断这样s做： 
+
+&ensp;&ensp;同时，我们可以通过使用C++自动类型推断这样做： 
 ```C++
     //可以不这样做：
     vector<double>::iterator pd = scores.begin();
