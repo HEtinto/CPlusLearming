@@ -11,12 +11,12 @@
     {
         ShowReview(*pr);
     }
-``` 
+```
 
 &ensp;&ensp;替换为： 
 ```C++
 for_each(books.begin(), books.end(), ShowReview);
-``` 
+```
 
 &ensp;&ensp;这样可以避免显式地使用迭代器变量。 
 ## random_shuffle() 
@@ -25,7 +25,7 @@ for_each(books.begin(), books.end(), ShowReview);
 &ensp;&ensp;例如，下面的语句随机排列books矢量中所有元素： 
 ```C++
     random_shuffle(books.begin(), books.end());
-``` 
+```
 
 &ensp;&ensp;从上面的例子可以看出：random_shuffle()函数的第一个参数为区间的起点，第二个参数是区间的终点的下一个节点。 
 ## sort()函数 
@@ -36,7 +36,7 @@ for_each(books.begin(), books.end(), ShowReview);
     vector<int> coolstuff;
     ......
     sort(coolstuff.begin(), coolstuff.end());
-``` 
+```
 
 &ensp;&ensp;如果容器是用户定义的对象，则要使用sort()，必须定义能够处理该类型对象的``operator<()``函数。 
 
@@ -53,11 +53,11 @@ for_each(books.begin(), books.end(), ShowReview);
         else 
         return false;
     }
-``` 
+```
 &ensp;&ensp;有了这样的函数后，就可以对包含Review对象（如books）的矢量进行排序：
 ```C++
     sort(books.begin(), books.end());
-``` 
+```
 
 &ensp;&ensp;**另一种格式的sort()。**它接受三个参数，前两个参数也是指定区间的迭代器，最后一个参数也是指定区间的迭代器，最后一个参数是指向要使用的函数的指针（函数对象），而不是用于比较的``operator < ()``。 
 
@@ -70,8 +70,9 @@ for_each(books.begin(), books.end(), ShowReview);
         else
         return false;
     }
-``` 
+```
 &ensp;&ensp;有了这个函数，就可以使用下面的语句将包含Review对象的books矢量按rating升序排列：
 ```C++
     sort(books.begin(), books.end(), WorseThan);
 ```
+&ensp;&ensp;注意，与``operator < ()``相比，``WorseThan``函数执行的对Review对象进行排序的工作不那么完整。如果两个对象的``title``成员相同，``operator < ()``函数将按``rating``进行排序，而``WorseThan()``将它们视为相同的。第一种排序称为全排序（total ordering），第二种排序称为完整弱排序（strict weak ordering）。在全排序中，如果``a<b``和``b<a``都不成立，则**a**和**b**必定相同。在完整弱排序，情况就不是这样了。它们可能相同，也可能只是在某方面相同，如``WorseThan``示例中的``rating``成员。所以在完整弱排序中，只能说它们等价，而不是相同。
